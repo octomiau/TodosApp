@@ -22,15 +22,14 @@ function App(){
     }
   
 
-    const removeTodo = e =>{
-        const index = Number(e.target.id);
+    const removeTodo = index => {
         let temp = [...todos];
         temp.splice(index,1);
         setTodos(temp);
     }
     return (<>
         {todos.map((todo,i) => 
-        <div classname="todo" key={i} onClick={removeTodo}> {todo.text}</div>)}
+            <Todo index={i} todo={todo} remove={removeTodo}/>)}
        <TodoForm addTodo={addTodo}/>
     </>);
 }
