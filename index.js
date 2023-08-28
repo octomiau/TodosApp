@@ -21,9 +21,15 @@ function App(){
         setTodos(newTodos);
         setValue('');
     }
+    const removeTodo = e =>{
+        const index = Number(e.target.id);
+        let temp = [...todos];
+        temp.splice(index,1);
+        setTodos(temp);
+    }
     return (<>
         {todos.map((todo,i) => 
-        <div classname="todo" key={i}> {todo.text}</div>)}
+        <div classname="todo" key={i} onClick={removeTodo}> {todo.text}</div>)}
         <formonDubmit={handleSubmit}>
             <input
             type="text"
