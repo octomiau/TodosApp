@@ -29,7 +29,7 @@ function App(){
     }
     return (<>
         {todos.map((todo,i) => 
-            <Todo index={i} todo={todo} remove={removeTodo}/>)}
+            <Todo index={i} key={i} todo={todo} remove={removeTodo}/>)}
        <TodoForm addTodo={addTodo}/>
     </>);
 }
