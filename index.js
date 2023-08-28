@@ -1,3 +1,5 @@
+const { useDebugValue } = require("react");
+
 function App(){
     const [todos, setTodos] =React.useState([
         {
@@ -13,14 +15,13 @@ function App(){
             isCompleted: false,
         }
     ]);
-    const [value, setValue]= React.useState('');
-    const handleSubmit= e => {
-        e.preventDefault();
-        if(!value) return;
-        const newTodos = [...todos, {text:value, is complited:false}]
+    
+    const addTodo = text =>{
+        const newTodos = [...todos, {text:text, isCompleted:false}];
         setTodos(newTodos);
-        setValue('');
     }
+  
+
     const removeTodo = e =>{
         const index = Number(e.target.id);
         let temp = [...todos];
@@ -30,15 +31,7 @@ function App(){
     return (<>
         {todos.map((todo,i) => 
         <div classname="todo" key={i} onClick={removeTodo}> {todo.text}</div>)}
-        <formonDubmit={handleSubmit}>
-            <input
-            type="text"
-            className="input"
-            value={value}
-            placeholder="Add Todo ..."
-            onChange={e=> setValue(e.target.value)}
-            />
-        </form>
+       <TodoForm addTodo={addTodo}/>
     </>);
 }
 
