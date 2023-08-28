@@ -14,7 +14,8 @@ function App(){
         }
     ]);
     return (<>
-        {todos.map((todo,i) => <div key={i}> {todo.text}</div>)}
+        {todos.map((todo,i) => 
+        <div classname="todo" key={i}> {todo.text}</div>)}
     </>);
 }
 
